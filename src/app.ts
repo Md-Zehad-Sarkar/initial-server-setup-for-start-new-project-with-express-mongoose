@@ -16,8 +16,4 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(
-    `server are running on http://localhost:${port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
-  );
-});
+
