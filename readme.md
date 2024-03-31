@@ -38,6 +38,9 @@ now you see a file name package.json
 
 now install express, cors, mongoose, typescript, dotenv, zod : npm install express cors mongoose typescript dotenv
 
+install express types: npm i --save-dev @types/express
+install cors types: npm i --save-dev @types/cors
+
 create a folder: src
 create a file : src/app.ts
 app.ts are now looks like :
@@ -52,15 +55,14 @@ app.use(cors());
 app.use(express.json()); // parser
 
 app.get("/", (req, res) => {
-  res.json({
-    Server_Running: true,
-    Message: "Express server are running",
-  });
+res.json({
+Server_Running: true,
+Message: "Express server are running",
+});
 });
 
 app.listen(port, () => {
-  console.log(
-    `server are running on http://localhost:${port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
-  );
+console.log(
+`server are running on http://localhost:${port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
+);
 });
-
