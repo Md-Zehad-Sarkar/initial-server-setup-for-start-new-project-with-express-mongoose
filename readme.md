@@ -7,119 +7,15 @@
 - Mongoose
 - Zod
 
-### setup guide with npm
+### How to run
 
-open your terminal: mkdir first-server
-
-change directory: cd first-server
-
-initialized server: npm init -y
-
-you see the initialized package:
-
-{
-"name": "initial-server-with-express-mongoose-and-error-handling",
-"version": "1.0.0",
-"description": "",
-"main": "index.js",
-"scripts": {
-"test": "echo \"Error: no test specified\" && exit 1"
-},
-"keywords": [],
-"author": "",
-"license": "ISC"
-}
-
-open your vs code: cd code .
-
-press enter on your keyboard
-
-now you see a file name package.json
-
-now install express, cors, mongoose, typescript, dotenv, zod : npm install express cors mongoose typescript dotenv
-
-install express types: npm i --save-dev @types/express
-install cors types: npm i --save-dev @types/cors
-
-create a folder: src
-create a file : src/app.ts
-app.ts are now looks like :
-import express from "express";
-import cors from "cors";
-const port = 5000;
-
-const app = express();
-
-//middleware
-app.use(cors());
-app.use(express.json()); // parser
-
-app.get("/", (req, res) => {
-res.json({
-Server_Running: true,
-Message: "Express server are running",
-});
-});
-
-app.listen(port, () => {
-console.log(
-`server are running on http://localhost:${port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
-);
-});
-
-create a folder: app
-create a folder :app/config
-create a file app/config/index.ts
-now setup index.ts file:
-import dotenv from "dotenv";
-import path from "path";
-
-dotenv.config({ path: path.join(process.cwd(), ".env") });
-
-export default {
-Node_ENV: process.env.NODE_ENV,
-Base_url: process.env.BASE_URL,
-Port: process.env.PORT,
-DATABASE_URI: process.env.DATABASE_URI,
-DATABASE_SECRET_PASSWORD: process.env.DATABASE_SECRET_PASSWORD,
-BCRYPT_SALT: process.env.BCRYPT_SALT,
-};
-
-create a file on src folder: src/server.ts
-now setup server :
-import mongoose from "mongoose";
-import config from "./app/config";
-import { Server } from "http";
-import { app } from "./app";
-let server: Server;
-
-async function main() {
-try {
-await mongoose.connect(config.DATABASE_URI as string);
-server = app.listen(config.Port, () => {
-console.log(
-`server are running on http://localhost:${config.Port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
-);
-});
-} catch (error) {
-console.log(error);
-}
-}
-
-main();
-// close and exit server on unhandledRejection
-process.on('unhandledRejection', () => {
-console.log(`unhandledRejection is detected, shutting down the server`);
-if (server) {
-server.close(() => {
-process.exit(1);
-});
-}
-process.exit(1);
-});
-
-//close server on uncaughtException
-process.on('uncaughtException', () => {
-console.log(`uncaughtException is detected, shutting down the server`);
-process.exit(1);
-});
+1. Clone the repository : git clone repository_url
+2. Install dependency: npm install
+3. Change .env.example to .env and replace necessary info
+4. Run the server development mode: npm run dev
+5. Run the server production mode: npm run start:prod
+6. For build: npm run build
+7. For lint: npm run lint
+8. For fixing lint: npm run lint:fix
+9. For prettier format: npm run prettier:format
+10. For prettier format: npm run prettier:fix
