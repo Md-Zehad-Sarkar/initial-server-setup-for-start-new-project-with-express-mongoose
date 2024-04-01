@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import config from "./app/config";
-import { Server } from "http";
-import { app } from "./app";
+import mongoose from 'mongoose';
+import config from './app/config';
+import { Server } from 'http';
+import { app } from './app';
 let server: Server;
 
 async function main() {
@@ -9,7 +9,7 @@ async function main() {
     await mongoose.connect(config.DATABASE_URI as string);
     server = app.listen(config.Port, () => {
       console.log(
-        `server are running on http://localhost:${config.Port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`
+        `server are running on http://localhost:${config.Port} time:${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`,
       );
     });
   } catch (error) {

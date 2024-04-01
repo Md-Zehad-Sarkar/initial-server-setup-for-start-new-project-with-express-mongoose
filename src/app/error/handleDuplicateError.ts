@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { TErrorSource } from "../types/error.types";
+import { TErrorSource } from '../types/error.types';
 
 export const handleDuplicateError = (err: any) => {
   const match = err?.message.match(/"([^"]*)"/);
@@ -8,14 +8,14 @@ export const handleDuplicateError = (err: any) => {
 
   const errorSources: TErrorSource = [
     {
-      path: "",
+      path: '',
       message: `${extractMessage} is already exist`,
     },
   ];
   const statusCode = 400;
   return {
     statusCode,
-    message: "Duplicate entry",
+    message: 'Duplicate entry',
     errorSources,
   };
 };

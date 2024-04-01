@@ -1,6 +1,5 @@
-import { ZodError, ZodIssue } from "zod";
-import { TErrorSource, TGenericErrorResponse } from "../types/error.types";
-
+import { ZodError, ZodIssue } from 'zod';
+import { TErrorSource, TGenericErrorResponse } from '../types/error.types';
 
 export const handleZodErrors = (err: ZodError): TGenericErrorResponse => {
   const errorSources: TErrorSource = err.issues?.map((issue: ZodIssue) => {
@@ -13,7 +12,7 @@ export const handleZodErrors = (err: ZodError): TGenericErrorResponse => {
   const statusCode = 404;
   return {
     statusCode,
-    message: "Validation Error",
+    message: 'Validation Error',
     errorSources,
   };
 };

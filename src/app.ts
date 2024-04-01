@@ -1,9 +1,9 @@
-import express, { Application, Request, Response } from "express";
-import cors from "cors";
-import config from "./app/config";
-import { router } from "./app/routes/index.routes";
-import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
-import { apiNotFound } from "./app/middleware/api.notFound";
+import express, { Application, Request, Response } from 'express';
+import cors from 'cors';
+import config from './app/config';
+import { router } from './app/routes/index.routes';
+import { globalErrorHandler } from './app/middleware/globalErrorHandler';
+import { apiNotFound } from './app/middleware/api.notFound';
 export const port = config.Port || 5000;
 
 export const app: Application = express();
@@ -13,12 +13,12 @@ app.use(cors());
 app.use(express.json()); // parser
 
 //routes
-app.use("/api/v1", router);
+app.use('/api/v1', router);
 
-app.get("/", (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.json({
     Server_Running: true,
-    Message: "Express server are running",
+    Message: 'Express server are running',
   });
 });
 
